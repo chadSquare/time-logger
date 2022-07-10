@@ -1,1 +1,23 @@
-<p>header works!</p>
+<p>
+  <mat-toolbar color="primary">
+    <div class="container">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>My App</span>
+    </div>
+    <div class="container container2" *ngIf="isLoggedIn$">
+      <form action="" [formGroup]="formGroup" >
+          <mat-select (selectionChange)="navigate()" formControlName="optionsControl">
+            <mat-option *ngFor="let option of options" [value]=option>
+              {{option}}
+            </mat-option>
+          </mat-select>
+      </form>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>settings</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</p>
+

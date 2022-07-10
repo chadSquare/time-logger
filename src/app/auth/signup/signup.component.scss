@@ -1,0 +1,50 @@
+.container {
+  height: 100%;
+  width: 100%;
+
+  .heading {
+    margin: auto;
+    text-align: center;
+  }
+
+  .control-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 10px 20px 10px;
+    padding: 10px 10px 0 10px;
+
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.75);
+
+    label {}
+
+    input {
+      &:focus {}
+    }
+
+    .error-text-container {
+      width: 53%;
+      text-align: right;
+      color: red;
+    }
+
+  }
+
+  .form-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 30px;
+    padding-right: 11px;
+  }
+
+  .save-btn {}
+
+ mat-spinner {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+}

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="heading">
+    <h2>Create your free account</h2>
+  </div>
+  <ng-container [formGroup]="loginForm">
+    <div class="control-container">
+      <mat-form-field >
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter your email" value="">
+      </mat-form-field>
+    </div>
+    <div class="control-container">
+      <mat-form-field >
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" placeholder="Enter your password" value="">
+      </mat-form-field>
+    </div>
+  </ng-container>
+
+  <div class="form-btn-container">
+    <button mat-stroked-button color="primary" (click)="onCancel()">Cancel</button>
+    <button class="save-btn" mat-raised-button  color="primary" (click)="login()" [disabled]="!loginForm.valid">
+      <mat-spinner color="accent" class="button-spinner" *ngIf="showLoader"></mat-spinner>
+      Signup
+    </button>
+  </div>
+
+</div>

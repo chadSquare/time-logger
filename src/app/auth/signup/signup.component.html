@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="heading">
+    <h2>Create your free account</h2>
+  </div>
+    <ng-container [formGroup]="signupForm">
+      <div class="control-container">
+          <mat-form-field >
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" placeholder="Enter your first name" value="">
+          </mat-form-field>
+      </div>
+      <div class="control-container">
+        <mat-form-field >
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Enter your last name" value="">
+        </mat-form-field>
+      </div>
+      <div class="control-container">
+        <mat-form-field >
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Enter your email" value="">
+        </mat-form-field>
+      </div>
+      <div class="control-container">
+        <mat-form-field >
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" placeholder="Enter your password" value="">
+        </mat-form-field>
+        </div>
+      <div class="control-container">
+        <mat-form-field >
+          <mat-label>Confirm password</mat-label>
+          <input matInput formControlName="confirmPassword" placeholder="Confirm your password" value="">
+        </mat-form-field>
+      </div>
+    </ng-container>
+
+  <div class="form-btn-container">
+    <button mat-stroked-button color="primary" (click)="onCancel()">Cancel</button>
+    <button class="save-btn" mat-raised-button  color="primary" (click)="signup()" [disabled]="!signupForm.valid">
+      <mat-spinner color="accent" class="button-spinner" *ngIf="showSavingLoader"></mat-spinner>
+      Signup
+    </button>
+  </div>
+
+</div>
