@@ -6,7 +6,7 @@
       </button>
       <span>My App</span>
     </div>
-    <div class="container container2" *ngIf="isLoggedIn$">
+    <div class="container container2" *ngIf="isLoggedIn === true">
       <form action="" [formGroup]="formGroup" >
           <mat-select (selectionChange)="navigate()" formControlName="optionsControl">
             <mat-option *ngFor="let option of options" [value]=option>

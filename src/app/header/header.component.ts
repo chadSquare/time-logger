@@ -18,11 +18,11 @@ export class HeaderComponent implements OnInit, OnChanges {
   })
 
   selectedOption = "";
-  public isLoggedIn$ = false;
+  public isLoggedIn = false;
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn();
+    this.listenForLoggedInUpdates();
     this.listenForRouterChanges();
   }
 
@@ -48,14 +48,14 @@ export class HeaderComponent implements OnInit, OnChanges {
     )
   }
 
-  isLoggedIn() {
+  listenForLoggedInUpdates() {
     this.authService.isLoggedIn().pipe(
       tap(userData => {
         if(userData) {
-          this.isLoggedIn$ = true;
+          this.isLoggedIn = true;
           this.setupHeaderForm();
         } else {
-          this.isLoggedIn$ = false;
+          this.isLoggedIn = false;
         }
       })
     ).subscribe();
