@@ -12,6 +12,7 @@ table {
 
   .header {
     height: 50px;
+    @include baseTextStyle($color: $dark-primary);
     th {
       h2 {
         margin: 0;
@@ -24,25 +25,20 @@ table {
     border-top: 1px solid $smoke;
 
     .displayed-week {
-      @include baseTextStyle();
-      /* On screens that are 600px or less, set the background color to olive */
-      @media screen and (max-width: 600px) {
-        //.displayed-week {
-          //@include baseTextStyle($fontSize: 4px);
-          font-size: 10px;
-        //}
-      }
+      @include baseTextStyle($color: $dark-primary);
     }
   }
 
   .labels {
     height: 40px;
     border-bottom: 1px solid $smoke;
+    @include baseTextStyle($color: $dark-primary);
   }
 
   .content {
     height: 40px;
     border-bottom: 1px solid $smoke;
+    @include baseTextStyle($color: $dark-primary);
   }
 
   .content:nth-child(4){
@@ -58,19 +54,10 @@ table {
   }
 
   .total-time {
-    //background-color: $smoke;
+    @include baseTextStyle($color: $dark-primary);
   }
 
   .buttons-container {
-    //display: flex;
-    //border: none;
-    //flex-direction: row;
-    //height: 30px;
-    //justify-content: space-evenly;
-    //gap: 5px;
-    //align-items: center;
-    background-color: #3c2f80;
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -81,12 +68,10 @@ table {
       flex-direction: row;
       align-items: center;
       align-content: center;
-      border: 1px solid $powder;
+      border: 1px solid $dark-primary;
       border-radius: 3px;
       background-color: transparent;
-      color: $powder;
-      @include baseTextStyle($color: $powder);
-      //padding-top: 5px;
+      @include baseTextStyle($color: $dark-primary);
       margin: 3px 14px 0 10px;
       cursor: pointer;
     }
@@ -95,12 +80,20 @@ table {
 
 :host ::ng-deep {
   .material-icons {
-    //font-size: 15px;
     margin-top: 6px;
-    color: $powder;
+    color: $dark-primary;
     cursor: pointer;
-    //margin-left: 4px;
   }
 }
 
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+  .displayed-week {
+    font-size: 10px;
+  }
+
+  .buttons-container {
+    margin-top: 13px;
+  }
+}
 

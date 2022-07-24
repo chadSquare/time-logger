@@ -107,8 +107,7 @@ export class AccountComponent implements OnInit {
   onCancelEmployeeDetailsForm(event) {
     event.preventDefault();
     this.employeeDetailsGroup.reset(this.orignalEntityConfig.employeeDetails);
-    const x = this.orignalEntityConfig.employeeDetails.dateOfBirth.split('-');
-    this.employeeDetailsGroup.get('dateOfBirth').patchValue(moment([x[2], (+x[1]-1).toString(), x[0]]).toISOString());
+    this.employeeDetailsGroup.get('dateOfBirth').patchValue(new Date(this.orignalEntityConfig.employeeDetails.dateOfBirth));
   }
 
   formatDateOfBirth(): EmployeeDetailsModel {

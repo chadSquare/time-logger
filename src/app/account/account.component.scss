@@ -7,7 +7,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   margin-bottom: 10px;
-  .account-detail {
+  .account-detail-btn {
     width: 30%;
     height: 100px;
     border-radius: 3px;
@@ -34,6 +34,8 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  top: -120px;
 
   .form-group {
     border-radius: 3px;
@@ -41,7 +43,9 @@ form {
     -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     width: 90%;
-    margin: 10px;
+    //margin: 10px;
+    background-color: $powder;
+
 
     .header {
 
@@ -113,10 +117,25 @@ form {
   .mat-form-field-underline {
     width: 0;
   }
+
+  .mat-input-element {
+    color: $dark-primary;
+  }
 }
 
 @media screen and (max-width: 600px) {
   form {
     width: 90vw;
+  }
+
+  .dashboard {
+    flex-direction: column;
+    gap: 10px;
+    height: 200px;
+
+    .account-detail-btn {
+      width: 70%;
+      margin: auto;
+    }
   }
 }
