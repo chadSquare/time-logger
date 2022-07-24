@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {EntityConfigModel} from "./model/entityConfig";
 import {map, Observable} from "rxjs";
+import firebase from "firebase/compat";
+import {EmployeeDetailsModel} from "./model/employeeDetails";
+import {BankDetailsModel} from "./model/bankDetailsModel";
+import {SalaryDetailsModel} from "./model/salaryDetailsModel";
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +40,32 @@ export class EntityConfigService {
     this.firestore.collection(`users`).doc(uid).set(config).catch(err => console.log(err))
   }
 
-  getEmployeeDetails(uid: string){
-    return this.firestore.doc<EntityConfigModel>(`users/${uid}`).get().pipe(map(data => data.get('employeeDetails')));
+  getAllEmployeeConfig(uid: string): Observable<firebase.firestore.DocumentSnapshot<EntityConfigModel>> {
+    return this.firestore.doc<EntityConfigModel>(`users/${uid}`).get();
+  }
+
+  getEmployeeDetails(uid: string): Observable<firebase.firestore.DocumentSnapshot<EmployeeDetailsModel>> {
+    return this.firestore.doc<EmployeeDetailsModel>(`users/${uid}`).get().pipe(map(data => data.get('employeeDetails')));
+  }
+
+  setEmployeeDetails(uid: string, entityConfigModel: EntityConfigModel){
+    return this.firestore.doc<EntityConfigModel>(`users/${uid}`).set(entityConfigModel, {merge: true});
+  }
+
+  getBankDetails(uid: string): Observable<firebase.firestore.DocumentSnapshot<BankDetailsModel>> {
+    return this.firestore.doc<BankDetailsModel>(`users/${uid}`).get().pipe(map(data => data.get('bankDetails')));
+  }
+
+  setBankDetails(uid: string, entityConfigModel: EntityConfigModel){
+    return this.firestore.doc<EntityConfigModel>(`users/${uid}`).set(entityConfigModel, {merge: true});
+  }
+
+  getSalaryDetails(uid: string): Observable<firebase.firestore.DocumentSnapshot<SalaryDetailsModel>> {
+    return this.firestore.doc<SalaryDetailsModel>(`users/${uid}`).get().pipe(map(data => data.get('salaryDetails')));
+  }
+
+  setSalaryDetails(uid: string, entityConfigModel: EntityConfigModel){
+    return this.firestore.doc<EntityConfigModel>(`users/${uid}`).set(entityConfigModel, {merge: true});
   }
 
   firestoreDemo() {

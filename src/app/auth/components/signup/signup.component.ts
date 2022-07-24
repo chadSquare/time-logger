@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {AuthService} from "../../shared/auth.service";
+import {AuthService} from "../../service/auth.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {EntityConfigService} from "../../shared/entity-config.service";
-import {EntityConfigLS, getFromLocal} from "../../shared/utils/localStorageUtils";
+import {EntityConfigService} from "../../../shared/entity-config.service";
+import {EntityConfigLS, getFromLocal} from "../../../shared/utils/localStorageUtils";
 import {
   AbstractControl,
   Form,

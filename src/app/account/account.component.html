@@ -1,1 +1,143 @@
-<p>account works!</p>
+<div class="dashboard">
+  <button mat-raised-button color="primary" class="account-detail" id="employeeDetails" (click)="toggleEmployeeDetailsForm()">
+    View And Edit Your Employee Details
+  </button>
+  <button mat-raised-button color="primary" class="account-detail" id="bankDetails" (click)="toggleBankDetailsForm()">
+    View And Edit Your Bank Details
+  </button>
+  <button mat-raised-button color="primary" class="account-detail" id="salaryDetails" (click)="toggleSalaryDetailsForm()">
+    View Salary Your Details
+  </button>
+</div>
+
+<form>
+  <ng-container *ngIf="showEmployeeDetailsForm">
+    <div class="form-group" [formGroup]="employeeDetailsGroup">
+      <div class="header">
+        <h2 class="title">Employee Details</h2>
+        <mat-icon class="close-icon" (click)="toggleEmployeeDetailsForm()">close</mat-icon>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Date Of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Profile Picture</mat-label>
+          <input matInput formControlName="profilePicture">
+        </mat-form-field>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Job Title</mat-label>
+          <input matInput formControlName="jobTitle">
+        </mat-form-field>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Start Date</mat-label>
+          <input matInput formControlName="startDate">
+        </mat-form-field>
+      </div>
+
+      <div class="buttons-container">
+        <button mat-stroked-button color="primary" (click)="onCancelEmployeeDetailsForm($event)">Cancel</button>
+        <button class="save-btn" mat-raised-button  color="primary" (click)="submitEmployeeDetailsForm($event)"
+                [disabled]="!employeeDetailsGroup.valid"
+                [ngClass]="{'disabled': !employeeDetailsGroup.touched}">
+          <mat-spinner color="accent" class="button-spinner" *ngIf="showSavingLoader"></mat-spinner>
+          submit
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="showBankDetailsForm">
+    <div class="form-group" [formGroup]="bankDetailsGroup">
+      <div class="header">
+        <h2 class="title">Bank Details</h2>
+        <mat-icon class="close-icon" (click)="toggleBankDetailsForm()">close</mat-icon>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Account Number</mat-label>
+          <input matInput formControlName="accountNumber">
+        </mat-form-field>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Account Type</mat-label>
+          <input matInput formControlName="accountType">
+        </mat-form-field>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Bank Name</mat-label>
+          <input matInput formControlName="bankName">
+        </mat-form-field>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Branch Number</mat-label>
+          <input matInput formControlName="branchNumber">
+        </mat-form-field>
+      </div>
+
+      <div class="buttons-container">
+        <button mat-stroked-button color="primary" (click)="onCancelBankDetailsForm($event)">Cancel</button>
+        <button class="save-btn" mat-raised-button  color="primary" (click)="submitBankDetailsForm($event)"
+                [disabled]="!bankDetailsGroup.valid"
+                [ngClass]="{'disabled': !bankDetailsGroup.touched}">
+          <mat-spinner color="accent" class="button-spinner" *ngIf="showSavingLoader"></mat-spinner>
+          submit
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="showSalaryDetailsForm">
+    <div class="form-group" [formGroup]="salaryDetailsGroup">
+      <div class="header">
+        <h2 class="title">Salary Details</h2>
+        <mat-icon class="close-icon" (click)="toggleSalaryDetailsForm()">close</mat-icon>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Overtime Hourly Rate</mat-label>
+          <input matInput formControlName="overtimeHourlyRate">
+        </mat-form-field>
+      </div>
+      <div class="form-control-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Standard Hourly Rate</mat-label>
+          <input matInput formControlName="standardHourlyRate">
+        </mat-form-field>
+      </div>
+      <div class="buttons-container">
+        <button mat-stroked-button color="primary" (click)="onCancelSalaryDetailsForm($event)">Cancel</button>
+        <button class="save-btn" mat-raised-button  color="primary" (click)="submitSalaryDetailsForm($event)"
+                [disabled]="!salaryDetailsGroup.valid"
+                [ngClass]="{'disabled': !salaryDetailsGroup.touched}">
+          <mat-spinner color="accent" class="button-spinner" *ngIf="showSavingLoader"></mat-spinner>
+          submit
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</form>

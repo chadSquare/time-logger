@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginComponent} from "../auth/login/login.component";
+import {LoginComponent} from "../auth/components/login/login.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {SignupComponent} from "../auth/signup/signup.component";
+import {SignupComponent} from "../auth/components/signup/signup.component";
+import {AuthService} from "../auth/service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,7 @@ import {SignupComponent} from "../auth/signup/signup.component";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }

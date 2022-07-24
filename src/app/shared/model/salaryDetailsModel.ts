@@ -1,4 +1,4 @@
-export interface SalaryDataModel {
+export interface SalaryDetailsModel {
   overtimeHourlyRate: number,
     standardHourlyRate: number
 }

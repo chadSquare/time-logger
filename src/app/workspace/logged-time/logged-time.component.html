@@ -1,0 +1,36 @@
+<table>
+  <tr class="header">
+    <th colspan="2"><h2>Your Logged Time</h2></th>
+  </tr>
+  <tr class="cockpit">
+    <th class="buttons-container">
+<!--      <button (click)="filter('previous')" mat-raised-button color="primary">-->
+<!--        <mat-icon>arrow_back_ios</mat-icon>-->
+<!--      </button>-->
+<!--      <button (click)="filter('current')" mat-raised-button color="primary">Today</button>-->
+<!--      <button (click)="filter('future')" mat-raised-button color="primary">-->
+<!--        <mat-icon>arrow_forward_ios</mat-icon>-->
+<!--      </button>-->
+      <mat-icon (click)="filter('previous')">arrow_back_ios</mat-icon>
+      <button (click)="filter('current')">Today</button>
+      <mat-icon (click)="filter('future')">arrow_forward_ios</mat-icon>
+    </th>
+    <th class="displayed-week">Displaying: {{displayedWeek[0]}} - {{displayedWeek[6]}}</th>
+  </tr>
+  <tr class="labels">
+    <th>Date</th>
+    <th>Time Worked</th>
+  </tr>
+  <ng-container *ngFor="let log of listObs$ | async; let i = index">
+    <tr class="content">
+      <td>{{log | getDate}}</td>
+      <td>{{log | calculateHours}}</td>
+    </tr>
+  </ng-container>
+  <tr class="total-time">
+    <th>Total Time Logged For The Week</th>
+    <td class="time">{{totalTimeWorkedForWeek | getMins}}</td>
+  </tr>
+</table>
+
+

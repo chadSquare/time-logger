@@ -2,7 +2,7 @@ import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {EntityConfigLS, getFromLocal} from "../shared/utils/localStorageUtils";
 import {Router} from "@angular/router";
-import {AuthService} from "../shared/auth.service";
+import {AuthService} from "../auth/service/auth.service";
 import {Observable, tap} from "rxjs";
 
 @Component({
@@ -24,6 +24,8 @@ export class HeaderComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.listenForLoggedInUpdates();
     this.listenForRouterChanges();
+    // this.isLoggedIn = this.authService.isLoggedIn;
+    // this.setupHeaderForm();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -49,7 +51,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   }
 
   listenForLoggedInUpdates() {
-    this.authService.isLoggedIn().pipe(
+    this.authService.getLoggedIn().pipe(
       tap(userData => {
         if(userData) {
           this.isLoggedIn = true;

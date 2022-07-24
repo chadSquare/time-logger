@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {AuthService} from "../../shared/auth.service";
+import {AuthService} from "../../service/auth.service";
 import {MatDialogRef} from "@angular/material/dialog";
-import {EntityConfigService} from "../../shared/entity-config.service";
-import {getFromLocal} from "../../shared/utils/localStorageUtils";
+import {EntityConfigService} from "../../../shared/entity-config.service";
+import {getFromLocal} from "../../../shared/utils/localStorageUtils";
 import {tap} from "rxjs";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     password:new FormControl('', [Validators.required])
   })
 
-  constructor(private authService: AuthService, public dialogRef: MatDialogRef<LoginComponent>) { }
+  constructor(private authService: AuthService, public dialogRef: MatDialogRef<LoginComponent>, private router: Router) { }
 
   ngOnInit(): void {}
 
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
       })
       .finally(() => {
         console.log("done... hide loader");
-        this.showLoader = false;
+        this.router.navigateByUrl('myworkspace');
         this.showLoader = false;
       });
     this.dialogRef.close();
